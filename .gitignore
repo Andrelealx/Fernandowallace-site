@@ -1,0 +1,18 @@
+# Credenciais do Cloudflare Tunnel (NUNCA commitar)
+tunnel/config.yml
+tunnel/*.json
+
+# Variaveis de ambiente locais
+.env
+.env.local
+docker-compose.override.yml
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+*.swp
+*.swo
+.vscode/

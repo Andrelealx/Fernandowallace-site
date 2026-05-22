@@ -1,0 +1,13 @@
+# Modelo de configuracao do Cloudflare Tunnel
+# O script setup.ps1 gera o config.yml real automaticamente.
+# Nao commitar o config.yml gerado — ele contem o tunnel ID.
+
+tunnel: SEU-TUNNEL-ID-AQUI
+credentials-file: /etc/cloudflared/SEU-TUNNEL-ID-AQUI.json
+
+ingress:
+  - hostname: fernandowallace.com.br
+    service: http://site:80
+  - hostname: www.fernandowallace.com.br
+    service: http://site:80
+  - service: http_status:404

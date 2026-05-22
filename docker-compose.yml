@@ -1,0 +1,40 @@
+name: fw-site
+
+services:
+
+  # ── Site estático servido pelo nginx ──────────────────────────
+  site:
+    build: .
+    container_name: fw-site
+    restart: unless-stopped
+    ports:
+      - "8080:80"          # acesso local sempre disponivel
+    networks:
+      - fw-net
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost/ > /dev/null 2>&1 || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+
+  # ── Cloudflare Tunnel — expõe o site publicamente ─────────────
+  # Só sobe com:  docker compose --profile online up -d
+  tunnel:
+    image: cloudflare/cloudflared:latest
+    container_name: fw-tunnel
+    restart: unless-stopped
+    command: tunnel --no-autoupdate --config /etc/cloudflared/config.yml run
+    volumes:
+      - ./tunnel:/etc/cloudflared:ro
+    networks:
+      - fw-net
+    depends_on:
+      site:
+        condition: service_healthy
+    profiles:
+      - online
+
+networks:
+  fw-net:
+    driver: bridge

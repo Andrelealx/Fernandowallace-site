@@ -1,0 +1,12 @@
+.git
+.gitignore
+.claude
+memory/
+MEMORY.md
+docs/
+midias/
+scripts/
+tunnel/
+docker-compose*.yml
+Dockerfile
+*.ps1
