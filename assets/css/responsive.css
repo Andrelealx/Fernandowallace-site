@@ -1,0 +1,331 @@
+/* =========================================================
+   RESPONSIVE.CSS — Fernando Wallace · Media Queries
+   Mobile-first: base = mobile, progressivamente maior
+   ========================================================= */
+
+/* ===================
+   MOBILE — max 767px
+   =================== */
+@media (max-width: 767px) {
+  :root {
+    --navbar-height: 64px;
+    --gutter: 20px;
+  }
+
+  /* ── Navbar ─────────────────────────────── */
+  .hamburger    { display: flex; }
+  .navbar-links,
+  .navbar-cta   { display: none; }
+  .navbar-logo  { font-size: 1.1rem; }
+
+  /* ── Hero ────────────────────────────────── */
+  .hero-inner {
+    grid-template-columns: 1fr;
+    min-height: unset;
+    padding-top: calc(var(--navbar-height) + 2.5rem);
+    padding-bottom: 2rem;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  /* Foto acima do texto em mobile */
+  .hero-image-wrapper { order: 1; }
+  .hero-content       { order: 2; align-items: center; }
+
+  .hero-image-frame {
+    max-width: 320px;
+    margin-inline: auto;
+  }
+
+  /* Mantém borda dourada em mobile mas menor */
+  .hero-image-frame::before {
+    top: -10px;
+    right: -10px;
+    border-width: 1.5px;
+  }
+
+  .hero-image-frame::after {
+    bottom: -10px;
+    left: -10px;
+  }
+
+  .hero-photo {
+    max-height: 380px;
+  }
+
+  .hero-name {
+    font-size: clamp(2.4rem, 10vw, 3.2rem);
+  }
+
+  .hero-tagline {
+    font-size: 0.95rem;
+    max-width: 100%;
+  }
+
+  .hero-ctas {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+  }
+
+  .hero-ctas .btn-ghost,
+  .hero-ctas .btn-outline {
+    width: 100%;
+    max-width: 320px;
+    justify-content: center;
+  }
+
+  /* Stats bar: 2x2 em mobile */
+  .hero-stats-inner {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero-stat-item:nth-child(2)::after { display: none; }
+
+  .hero-stat-number { font-size: 1.5rem; }
+  .hero-stat-label  { font-size: 0.7rem; }
+
+  /* ── Sobre ───────────────────────────────── */
+  #sobre { padding: 4rem 0; }
+
+  .sobre-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .foto-wrapper::before,
+  .sobre-photo-frame::before {
+    top: -8px;
+    left: -8px;
+    right: 8px;
+    bottom: -8px;
+  }
+
+  .sobre-texto h2 {
+    font-size: 1.6rem;
+  }
+
+  /* ── Gestão ──────────────────────────────── */
+  #gestao { padding: 4rem 0; }
+
+  .gestao-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* ── Formação ────────────────────────────── */
+  #formacao { padding: 4rem 0; }
+
+  .formacao-grid { grid-template-columns: 1fr; }
+
+  .formacao-card {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  /* ── Galeria ─────────────────────────────── */
+  #galeria { padding: 4rem 0; }
+
+  .galeria-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .galeria-col {
+    grid-template-rows: unset;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+  }
+
+  .galeria-item--destaque {
+    aspect-ratio: 4 / 3;
+  }
+
+  .galeria-item {
+    aspect-ratio: 1 / 1;
+  }
+
+  .galeria-insta-cta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem;
+  }
+
+  .galeria-insta-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* ── Contato ─────────────────────────────── */
+  #contato { padding: 4rem 0; }
+
+  .contato-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .contato-form-wrap { padding: 1.5rem; }
+
+  /* ── Metas ───────────────────────────────── */
+  .metas-grid { grid-template-columns: 1fr; }
+  .metas-wrap { padding: 1.5rem; }
+
+  /* ── Depoimentos ─────────────────────────── */
+  #depoimentos { padding: 4rem 0; }
+  .depoimentos-grid { grid-template-columns: 1fr; }
+
+  /* ── Na Mídia ────────────────────────────── */
+  #midia { padding: 4rem 0; }
+  .midia-grid { grid-template-columns: 1fr; }
+
+  /* ── LGPD ────────────────────────────────── */
+  .lgpd-banner {
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+    padding: 1.25rem var(--gutter);
+  }
+
+  /* ── Footer ──────────────────────────────── */
+  .footer-inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.75rem;
+  }
+
+  /* ── Botões globais ──────────────────────── */
+  /* Não forçar 100% em todos os contextos */
+  .btn-primary,
+  .btn-outline,
+  .btn-ghost {
+    font-size: 0.85rem;
+    padding: 0.7rem 1.4rem;
+  }
+
+  /* Section headers */
+  .section-header { margin-bottom: 2rem; }
+  .section-header h2 { font-size: 1.75rem; }
+
+  /* Timeline */
+  .timeline { padding-left: 1.5rem; }
+
+  /* Cards */
+  .card.card-action { padding: 1.5rem; }
+
+  /* WhatsApp FAB */
+  .whatsapp-fab {
+    bottom: 20px;
+    right: 20px;
+    width: 52px;
+    height: 52px;
+  }
+}
+
+/* ===================
+   TABLET — 768px a 1023px
+   =================== */
+@media (min-width: 768px) and (max-width: 1023px) {
+  :root { --gutter: 24px; }
+
+  /* Navbar */
+  .hamburger    { display: flex; }
+  .navbar-links,
+  .navbar-cta   { display: none; }
+
+  /* Hero */
+  .hero-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    padding-top: calc(var(--navbar-height) + 3rem);
+  }
+
+  .hero-image-frame { max-width: 380px; }
+
+  .hero-stats-inner {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero-stat-item:nth-child(2)::after { display: none; }
+
+  /* Sobre */
+  .sobre-grid { gap: 3rem; }
+
+  /* Gestão */
+  .gestao-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Formação */
+  .formacao-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* Depoimentos */
+  .depoimentos-grid { grid-template-columns: 1fr; gap: 1rem; }
+
+  /* Na Mídia */
+  .midia-grid { grid-template-columns: 1fr; gap: 1rem; }
+
+  /* Galeria */
+  .galeria-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .galeria-insta-cta {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  /* Contato */
+  .contato-grid { gap: 2.5rem; }
+}
+
+/* ===================
+   DESKTOP — 1024px +
+   =================== */
+@media (min-width: 1024px) {
+  .hamburger    { display: none; }
+  .navbar-links { display: flex; }
+  .navbar-cta   { display: inline-flex; }
+}
+
+/* ===================
+   LARGE — 1280px +
+   =================== */
+@media (min-width: 1280px) {
+  :root { --container-max: 1200px; }
+
+  .hero-inner  { gap: 4rem; }
+  .sobre-grid  { gap: 6rem; }
+}
+
+/* ===================
+   REDUCED MOTION
+   =================== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ===================
+   PRINT
+   =================== */
+@media print {
+  .navbar, .whatsapp-fab, .mobile-drawer,
+  .drawer-overlay, #galeria, #contato { display: none; }
+
+  body { color: #000; }
+
+  a[href]::after { content: ' (' attr(href) ')'; }
+}
